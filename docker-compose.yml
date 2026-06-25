@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: eurosia_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: eurosia_user
+      POSTGRES_PASSWORD: eurosia_password
+      POSTGRES_DB: eurosia_one
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: eurosia_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eurosia_api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://eurosia_user:eurosia_password@db:5432/eurosia_one?schema=public
+      - REDIS_URL=redis://redis:6379
+      - JWT_ACCESS_SECRET=access-secret-token-key-64-character-length-abcdef
+      - JWT_REFRESH_SECRET=refresh-secret-token-key-64-character-length-abcdef
+      - ENCRYPTION_KEY=0123456789abcdef0123456789abcdef
+      - FRONTEND_URL=http://localhost:3000
+      - NODE_ENV=production
+    depends_on:
+      - db
+      - redis
+
+volumes:
+  pgdata:

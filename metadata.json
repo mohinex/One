@@ -1,0 +1,6 @@
+{
+  "name": "Eurosia One",
+  "description": "Unified AI Operating System web platform featuring intelligent chat, image/video generation, website creation, PDF document analytics, and code assistants.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

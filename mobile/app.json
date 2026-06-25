@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "Eurosia One",
+    "slug": "eurosia-one-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#030712"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "one.eurosia.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Eurosia One requires access to camera to capture professional documents and profile pictures.",
+        "NSPhotoLibraryUsageDescription": "Eurosia One demands access to photos to select image and PDF analyses targets.",
+        "NSMicrophoneUsageDescription": "Eurosia One requires microphone clearances for real-time speech synthesis transcribing."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#030712"
+      },
+      "package": "one.eurosia.app",
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-local-authentication",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#DC2626"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Eurosia One to access photos to select avatar images."
+        }
+      ]
+    ],
+    "scheme": "eurosiaone"
+  }
+}
